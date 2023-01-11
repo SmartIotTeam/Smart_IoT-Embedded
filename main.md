@@ -26,7 +26,7 @@ uint8_t rx_data;
 	if (ch == '\n') {
 		HAL_UART_Transmit(&huart3, (uint8_t *)"\r", 1, 0xFFFF);
 	}
-	HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, 0xFFFF);  //r?�� 보낸?��?�� n?�� 보내줘야 ?��
+	HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, 0xFFFF);  
 
 	return ch;
 }
@@ -39,7 +39,7 @@ uint8_t rx_data;
 	__HAL_UART_CLEAR_OREFLAG(&huart3);
 
 	HAL_UART_Receive(&huart3, (uint8_t *)&ch, 1, 0xFFFF);
-	HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, 0xFFFF);  //r?�� 보낸?��?�� n?�� 보내줘야 ?��
+	HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, 0xFFFF);  
 
 	return ch;
 }
