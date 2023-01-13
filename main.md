@@ -79,12 +79,37 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(isEmpty() == 0) {
+	   if(isEmpty() == 0) {
 		  data = pop();
 
-		  // 받은 데이터를 전송한다.
-		  HAL_UART_Transmit(&huart2, &data, 1, 10);
-		  HAL_UART_Transmit(&huart3, &data, 1, 10);
+		  if(command == 0) {
+			  command = data;
+		  }
+		  else if(command == 'r') {
+			  switch(data) {
+			  case '1':
+				  HAL_UART_Transmit(&huart2, &data, 1, 10);
+			  	  //TODO: Servo Control
+				  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 45);
+				  break;
+
+			  }
+			  HAL_UART_Transmit(&huart2, &command, 1, 10);
+			  HAL_UART_Transmit(&huart3, &command, 1, 10);
+			  command = 0;
+		  }
+		  else if(command == 'g') {
+			  switch(data) {
+			  case '1':
+				  HAL_UART_Transmit(&huart2, &data, 1, 10);
+			  	  //TODO: Servo Control
+				  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 45);
+				  break;
+			  }
+			  HAL_UART_Transmit(&huart2, &command, 1, 10);
+			  HAL_UART_Transmit(&huart3, &command, 1, 10);
+			  command = 0;
+		  }
 	  }
     /* USER CODE END WHILE */
 
